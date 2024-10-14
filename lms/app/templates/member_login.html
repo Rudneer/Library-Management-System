@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookWorm Library - Login</title>
+    <link rel="stylesheet" href="{% static 'css/member_login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-section">
+            <div class="logo">
+                <img src="{% static 'images/bookworm_logo.png' %}" alt="BookWorm Logo">
+            </div>
+            <h2>Welcome Back !!</h2>
+            <p>Please enter your credentials to log in</p>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" name="username" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit">SIGN IN</button>
+            </form>
+        </div>
+        <div class="signup-section">
+            <div class="logo">
+                <img src="{% static 'images/bookworm_logo.png' %}" alt="BookWorm Logo">
+            </div>
+            <h1>BookWorm</h1>
+            <p class="library">LIBRARY</p>
+            <p>New to our platform? Sign Up now.</p>
+            <a type="button" href="/member-signup/">SIGN UP</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <img src="{% static 'images/bookworm_logo.png' %}" alt="BookWorm Logo">
+                <h1>BookWorm</h1>
+                <p>LIBRARY</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><i class="icon-dashboard"></i> Dashboard</li>
+                    <li><i class="icon-catalog"></i> Catalog</li>
+                    <li><i class="icon-books"></i> Books</li>
+                    <li><i class="icon-users"></i> Users</li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <i class="icon-logout"></i> Log Out
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="user-info">
+                    <i class="icon-user"></i> Nisal Gunasekara (Admin)
+                </div>
+                <div class="time-info">
+                    <span>12:29 PM</span>
+                    <span>Sep 02, 2023</span>
+                    <i class="icon-settings"></i>
+                </div>
+            </header>
+
+            <!-- Dashboard Main -->
+            <div class="dashboard-main">
+                <div class="pie-chart-section">
+                    <div class="pie-chart">
+                        <!-- Simulated Pie Chart -->
+                        <div class="chart"></div>
+                    </div>
+                    <div class="chart-legend">
+                        <span><i class="dot borrowed"></i> Total Borrowed Books</span>
+                        <span><i class="dot returned"></i> Total Returned Books</span>
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <div class="stat-box">
+                        <i class="icon-users"></i>
+                        <div class="stat-number">0150</div>
+                        <div class="stat-label">Total User Base</div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="icon-books"></i>
+                        <div class="stat-number">01500</div>
+                        <div class="stat-label">Total Book Count</div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="icon-branches"></i>
+                        <div class="stat-number">0010</div>
+                        <div class="stat-label">Branch Count</div>
+                    </div>
+                </div>
+
+                <div class="extra-sections">
+                    <div class="overdue-section">
+                        <h3>Overdue Borrowers</h3>
+                        <div class="borrower">
+                            <i class="icon-user"></i>
+                            Sasmith Gunasekara (Borrowed ID: 10)
+                            <i class="icon-refresh"></i>
+                        </div>
+                        <!-- Additional Borrowers... -->
+                    </div>
+
+                    <div class="admin-section">
+                        <h3>BookWorm Admins</h3>
+                        <div class="admin">
+                            <i class="icon-admin"></i>
+                            Nisal Gunasekara (Admin ID: 1)
+                            <span class="active">Active</span>
+                        </div>
+                        <!-- Additional Admins... -->
+                    </div>
+
+                    <div class="branch-section">
+                        <h3>Branch Network</h3>
+                        <div class="branch">
+                            <i class="icon-branch"></i>
+                            BookWorm - Matara (Branch ID: 1)
+                            <i class="icon-refresh"></i>
+                        </div>
+                        <!-- Additional Branches... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

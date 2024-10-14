@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookWorm Library - Login</title>
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="admin-section">
+            <div class="logo">
+                <img src="{% static 'images/bookworm_logo.png' %}" alt="BookWorm Logo">
+            </div>
+            <h1>Admin Login</h1>
+            <a class="button" href = '/admin-login/'>LOGIN</a>
+        </div>
+        <div class="member-section">
+            <div class="logo">
+                <img src="{% static 'images/bookworm_logo.png' %}" alt="BookWorm Logo">
+            </div>
+            <h1>Member Login</h1>
+            <a class="button" href = '/member-login/'>LOGIN</a>
+        </div>
+    </div>
+</body>
+</html>
