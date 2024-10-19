@@ -1,7 +1,9 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -42,9 +44,39 @@ def admin_signup(request):
         
     return render(request, 'admin_signup.html')
 
-
+@login_required(login_url="/admin-login/")
 def admin_dashboard(request):
-    return render(request, 'admin_dashboard.html')
+    current_time = datetime.now()
+    context = {
+        'current_time': current_time,
+    }
+    return render(request, 'admin_dashboard.html', context)
+
+@login_required(login_url="/admin-login/")
+def admin_catalog(request):
+    current_time = datetime.now()
+    context = {
+        'current_time': current_time,
+    }
+    return render(request, 'admin_catalog.html', context)
+
+
+@login_required(login_url="/admin-login/")
+def admin_books(request):
+    current_time = datetime.now()
+    context = {
+        'current_time': current_time,
+    }
+    return render(request, 'admin_books.html', context)
+    
+@login_required(login_url="/admin-login/")
+def admin_users(request):
+    current_time = datetime.now()
+    context = {
+        'current_time': current_time,
+    }
+    return render(request, 'admin_users.html', context)
+
 
 def member_login(request):
     if request.method == "POST":
@@ -83,3 +115,6 @@ def member_signup(request):
 def member_dashboard(request):
     return render(request, 'member_dashboard.html')
 
+def log_out(request):
+    logout(request)
+    return redirect('/admin-login/')

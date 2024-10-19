@@ -19,33 +19,73 @@
             </div>
             <nav>
                 <ul>
-                    <li class="active"><i class="icon-dashboard"></i> Dashboard</li>
-                    <li><i class="icon-catalog"></i> Catalog</li>
-                    <li><i class="icon-books"></i> Books</li>
-                    <li><i class="icon-users"></i> Users</li>
+                    <li class="active"><img class="icon-dashboard" src="{% static 'icons/dashboardb_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;" > Dashboard</li>
+                    <a href="/admin-catalog/"><li><img class="icon-catalog" src="{% static 'icons/catalogw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;">Catalog</li></a>
+                    <a href="/admin-books/"><li><img class="icon-books" src="{% static 'icons/bookw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;"> Books</li></a>
+                    <a href="/admin-users/"><li><img class="icon-users" src="{% static 'icons/peoplew_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;"> Users</li></a>
                 </ul>
-            </nav>
-            <div class="logout">
-                <i class="icon-logout"></i> Log Out
-            </div>
+            </nav>  
+            <a class="logout" href="/logout/">
+                <img class="icon-logout" src="{% static 'icons/logoutw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;">Log Out
+            </a>
         </div>
+
+        <!-- <div id="transparent-image-container">
+            <img src="{% static 'icons/transparent_image.png' %}" id="transparent-image" alt="Transparent Image">
+        </div> -->
 
         <!-- Main Content -->
         <div class="main-content">
             <!-- Header -->
             <header class="header">
                 <div class="user-info">
-                    <i class="icon-user"></i> Nisal Gunasekara (Admin)
+                    <img class="user-icon" src="{% static 'icons/userb_icon.png' %}" alt="User Icon" style="width:25px; height:25px;" >
+                    <ul>
+                        <l1 class = "admin-name">Nisal Gunasekara</l1>
+                        <li class = "admin-text">Admin</li>
+                    </ul>
                 </div>
-                <div class="time-info">
-                    <span>12:29 PM</span>
-                    <span>Sep 02, 2023</span>
-                    <i class="icon-settings"></i>
+                <div class = "time-setting">
+                    <div class="time-info">
+                        <span class = "time">{{ current_time|date:"h:i A" }}</span>
+                        <span class = "date">{{ current_time|date:"M d, Y" }}</span>
+                    </div>
+                    <a class="settings" id="settings-icon" onclick="toggleSettings()">
+                        <img class="icon-settings" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >
+                    </a>
                 </div>
             </header>
 
             <!-- Dashboard Main -->
             <div class="dashboard-main">
+
+                <!-- Settings Div (Modal) -->
+                <div id="settings-div">
+                    <div class="chg-cred-head">
+                        <a class="chg-cred-text"><img class="chg-cred-icon" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >Change Credentials</a>
+                        <a class="settings" id="settings-icon" onclick="toggleSettings()">
+                            <img class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px;" >
+                        </a>
+                        
+                    </div>
+                    <form class = "chg-cred">
+                        <div class = "chg-cred-in">
+                            <label>Enter Current Password</label><input type="password" placeholder="Enter Current Password">
+                        </div>
+                        <div class = "chg-cred-in">
+                            <label>Enter New Password</label><input type="password" placeholder="Enter New Password">
+                        </div>
+                        <div class = "chg-cred-in">
+                            <label>Confirm New Password</label><input type="password" placeholder="Confirm New Password">
+                        </div>
+                    </form>
+                    <div class = "action-button">
+                        <button type="button" onclick="toggleSettings()">Cancel</button>
+                        <button type="button">Confirm</button>
+                    </div>
+                </div>
+
+
                 <div class="pie-chart-section">
                     <div class="pie-chart">
                         <!-- Simulated Pie Chart -->
@@ -109,5 +149,6 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'javascript/admin_dashboard.js' %}"></script>
 </body>
 </html>

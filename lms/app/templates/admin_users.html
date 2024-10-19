@@ -1,0 +1,394 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/admin_users.css' %}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <img src="{% static 'images/bookworm_logo.png' %}" alt="BookWorm Logo">
+                <h1>BookWorm</h1>
+                <p>LIBRARY</p>
+            </div>
+            <nav>
+                <ul>
+                    <a href="/admin-dashboard/"><li><img class="icon-dashboard" src="{% static 'icons/dashboardw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;" > Dashboard</li></a>
+                    <a href="/admin-catalog/"><li><img class="icon-catalog" src="{% static 'icons/catalogw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;">Catalog</li></a>
+                    <a href="/admin-books/"><li><img class="icon-books" src="{% static 'icons/bookw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;"> Books</li></a>
+                    <li class="active"><img class="icon-users" src="{% static 'icons/peopleb_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;"> Users</li>
+                </ul>
+            </nav>
+            <a class="logout" href="/logout/">
+                <img class="icon-logout" src="{% static 'icons/logoutw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;">Log Out
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="user-info">
+                    <img class="user-icon" src="{% static 'icons/userb_icon.png' %}" alt="User Icon" style="width:25px; height:25px;" >
+                    <ul>
+                        <l1 class = "admin-name">Nisal Gunasekara</l1>
+                        <li class = "admin-text">Admin</li>
+                    </ul>
+                </div>
+                <div class = "time-setting">
+                    <div class="time-info">
+                        <span class = "time">{{ current_time|date:"h:i A" }}</span>
+                        <span class = "date">{{ current_time|date:"M d, Y" }}</span>
+                    </div>
+                    <a class="settings" id="settings-icon" onclick="toggleSettings()">
+                        <img class="icon-settings" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >
+                    </a>
+                </div>
+            </header>
+
+            <!-- Dashboard Main -->
+            <div class="dashboard-main">
+
+                <!-- Settings Div (Modal) -->
+                <div id="settings-div">
+                    <div class="chg-cred-head">
+                        <a class="chg-cred-text"><img class="chg-cred-icon" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >Change Credentials</a>
+                        <a class="settings" id="settings-icon" onclick="toggleSettings()">
+                            <img class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px;" >
+                        </a>
+                        
+                    </div>
+                    <form class = "chg-cred">
+                        <div class = "chg-cred-in">
+                            <label>Enter Current Password</label><input type="password" placeholder="Enter Current Password">
+                        </div>
+                        <div class = "chg-cred-in">
+                            <label>Enter New Password</label><input type="password" placeholder="Enter New Password">
+                        </div>
+                        <div class = "chg-cred-in">
+                            <label>Confirm New Password</label><input type="password" placeholder="Confirm New Password">
+                        </div>
+                    </form>
+                    <div class = "action-button">
+                        <button type="button" onclick="toggleSettings()">Cancel</button>
+                        <button type="button">Confirm</button>
+                    </div>
+                </div>
+
+                <div class="bm-header">
+                    <div class="bm-header-left">User Management</div>
+                    <div class="bm-header-right">
+                        <div class = "add-book">
+                            <a href="/admin-dashboard/">
+                                <img class="add-book-icon" src="{% static 'icons/addw_icon.png' %}" alt="Add Book Icon" style="width:16px; height:16px;" >
+                                <span>Add User</span>
+                            </a>
+                        </div>
+                        <div class = "search-book">
+                            <img class="search-book-icon" src="{% static 'icons/searchb_icon.png' %}" alt="Search Book Icon" style="width:16px; height:16px;" >
+                            <input class = "search-book" placeholder="Search by ID or Name" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bb_table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Username</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr>
+                                <th class="border" colspan="6"></th>
+                            </tr>
+                        </thead>
+                        <tbody>                        
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>It Ends with Us</td>
+                                <td>Fictional</td>
+                                <td>English</td>
+                                
+                                <td class="action-buttons">
+                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                        <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                        <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                        <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'javascript/admin_dashboard.js' %}"></script>
+</body>
+</html>
