@@ -181,7 +181,7 @@ nav ul li.active{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 2;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: all 0.5s ease;
 }
@@ -377,4 +377,120 @@ thead{
 
 .action-buttons a{
     cursor: pointer;
+}
+
+
+/* Add Book  */
+.modal {
+    display: None;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.book-action-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px black solid;
+}
+
+.book-action-text div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-content {
+    background-color: white;
+    margin:10% auto 0px auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 450px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content input {
+    padding: 8px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+
+.input-group {
+    display: flex;
+    gap: 10px; /* Spacing between the two input fields */
+}
+
+.input-group input[type="text"] {
+    flex: 8; /* 70% for Type */
+}
+
+.input-group input[type="number"] {
+    flex: 2; /* 30% for Quantity */
+}
+
+.modal-content .add-btn {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-btn{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #D7D7D7;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;   
+}
+
+.add-btn:hover {
+    background-color: #555;
+}
+
+.close-btn:hover{
+    background-color: #b1b1b1;
+}
+
+.book-action-buttons {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px; 
+}
+
+.book-action-buttons button{
+    width: 50%;
+}
+
+.delete-text {
+    font-size: 15px;
+    color: #333;
+    margin: 40px 20px;
+    font-style: italic;
+    text-align: center;
+}
+
+#deleteBookModal .book-action-buttons, 
+#viewBookModal .book-action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

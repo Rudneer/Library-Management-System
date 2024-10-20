@@ -21,7 +21,7 @@
                 <ul>
                     <a href="/admin-dashboard/"><li><img class="icon-dashboard" src="{% static 'icons/dashboardw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;" > Dashboard</li></a>
                     <a href="/admin-catalog/"><li><img class="icon-catalog" src="{% static 'icons/catalogw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;">Catalog</li></a>
-                    <li class="active"><img class="icon-books" src="{% static 'icons/booksb_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;"> Books</li>
+                    <li class="active"><img class="icon-books" src="{% static 'icons/booksb_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;">Books</li>
                     <a href="/admin-users/"><li><img class="icon-users" src="{% static 'icons/peoplew_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;"> Users</li></a>
                 </ul>
             </nav>
@@ -85,7 +85,7 @@
                     <div class="bm-header-left">Book Management</div>
                     <div class="bm-header-right">
                         <div class = "add-book">
-                            <a href="/admin-dashboard/">
+                            <a onclick="add_book_toggle()" style="cursor: pointer;">
                                 <img class="add-book-icon" src="{% static 'icons/addw_icon.png' %}" alt="Add Book Icon" style="width:16px; height:16px;" >
                                 <span>Add Book</span>
                             </a>
@@ -120,13 +120,13 @@
                                 <td>English</td>
                                 <td>Available</td>
                                 <td class="action-buttons">
-                                    <a class="action-icon-class" id="action-icon-edit" onclick="">
+                                    <a onclick = "update_book_toggle()" class="action-icon-class" id="action-icon-edit" onclick="">
                                         <img class="edit-book-icon" src="{% static 'icons/editb_icon.png' %}" alt="Edit Book Icon" style="width:16px; height:16px;" >
                                     </a>
-                                    <a class="action-icon-class" id="action-icon-delete" onclick="">
+                                    <a onclick="delete_book_toggle()" class="action-icon-class" id="action-icon-delete" onclick="">
                                         <img class="delete-book-icon" src="{% static 'icons/trashb_icon.png' %}" alt="Delete Book Icon" style="width:16px; height:16px;" >
                                     </a>
-                                    <a class="action-icon-class" id="action-icon-view" onclick="">
+                                    <a onclick="view_book_toggle()" class="action-icon-class" id="action-icon-view" onclick="">
                                         <img class="view-book-icon" src="{% static 'icons/viewb_icon.png' %}" alt="View Book Icon" style="width:16px; height:16px;" >
                                     </a>
                                 </td>
@@ -390,6 +390,89 @@
             </div>
         </div>
     </div>
+
+    <div id="addBookModal" class="modal">
+        <div class="modal-content">
+            <div class="book-action-text">
+                <div><img class="icon-books" src="{% static 'icons/booksb_icon.png' %}" alt="Catalog Icon" style="width:22px; height:22px;">Add Book</div>
+                <img onclick="add_book_toggle()" class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px; cursor: pointer;" >
+            </div>
+            
+            <form class="book-action-form">
+                <input type="text" id="name" name="name" required placeholder="Name">
+
+                <input type="text" id="language" name="language" required placeholder="Language">
+                <div class = "input-group">
+                    <input type="text" id="type" name="type" required placeholder="Type">
+                    <input type="number" id="quantity" name="quantity" required placeholder="Quantity">
+                </div>
+                <div class="book-action-buttons">
+                    <button onclick="add_book_toggle()" class="close-btn">CLOSE</button>
+                    <button type="submit" class="add-btn">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="updateBookModal" class="modal">
+        <div class="modal-content">
+            <div class="book-action-text">
+                <div><img class="icon-books" src="{% static 'icons/booksb_icon.png' %}" alt="Catalog Icon" style="width:22px; height:22px;">Update Book</div>
+                <img onclick="update_book_toggle()" class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px; cursor: pointer;" >
+            </div>
+            
+            <form class="book-action-form">
+                <input type="text" id="name" name="name" required placeholder="Name">
+
+                <input type="text" id="language" name="language" required placeholder="Language">
+                <div class = "input-group">
+                    <input type="text" id="type" name="type" required placeholder="Type">
+                    <input type="number" id="quantity" name="quantity" required placeholder="Quantity">
+                </div>
+                <div class="book-action-buttons">
+                    <button onclick="update_book_toggle()" class="close-btn">CLOSE</button>
+                    <button type="submit" class="add-btn">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="deleteBookModal" class="modal">
+        <div class="modal-content">
+            <div class="book-action-text">
+                <div><img class="icon-books" src="{% static 'icons/trashb_icon.png' %}" alt="Catalog Icon" style="width:22px; height:22px;">Delete Confirmation</div>
+                <img onclick="delete_book_toggle()" class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px; cursor: pointer;" >
+            </div>
+            
+            <form class="book-action-form">
+                <div class = "delete-text">
+                    "Are you certain you wish to proceed with the deletion of the selected entry?"
+                </div>
+                <div class="book-action-buttons">
+                    <button type="submit" class="add-btn">CONFIRM</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="viewBookModal" class="modal">
+        <div class="modal-content">
+            <div class="book-action-text">
+                <div><img class="icon-books" src="{% static 'icons/trashb_icon.png' %}" alt="Catalog Icon" style="width:22px; height:22px;">View Book</div>
+                <img onclick="view_book_toggle()" class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px; cursor: pointer;" >
+            </div>
+            
+            <form class="book-action-form">
+                <div class = "delete-text">
+                    "Are you certain you wish to proceed with the deletion of the selected entry?"
+                </div>
+                <div class="book-action-buttons">
+                    <button onclick="view_book_toggle()" type="submit" class="add-btn">CLOSE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="{% static 'javascript/admin_dashboard.js' %}"></script>
 </body>
 </html>
