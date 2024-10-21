@@ -168,40 +168,19 @@ nav ul li.active{
     flex-wrap: wrap;
 }
 
-#settings-div {
-    position: absolute;
-    width: 30%;
-    height: 40vh;
-    top: 8.5vh;
-    right: 0px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: all 0.5s ease;
-}
-
 #settings-icon {
     cursor: pointer;
 }
 
 .chg-cred{
     font-size: 14px;
-    width: 90%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;     
     justify-content: space-between;
     align-items: baseline;
-    margin-top: 20px;
 }
 
 .chg-cred-in {
-    margin-bottom: 20px; 
     width: 100%;
     display: flex; 
     justify-content: space-between; 
@@ -217,7 +196,6 @@ nav ul li.active{
 }
 
 .chg-cred-head{
-    width: 90%;
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid black;
@@ -234,7 +212,8 @@ nav ul li.active{
 
 .action-button {
     display: flex;
-    justify-content: space-around; 
+    justify-content: center; 
+    margin-top: 20px;
   }
   
 .action-button button {
@@ -377,4 +356,171 @@ thead{
 
 .action-buttons a{
     cursor: pointer;
+}
+
+
+/* Add Book  */
+.modal {
+    display: None;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.book-action-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px black solid;
+}
+
+.book-action-text div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-content {
+    background-color: white;
+    margin:10% auto 0px auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 450px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content input {
+    padding: 8px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+
+.input-group {
+    display: flex;
+    gap: 10px; /* Spacing between the two input fields */
+}
+
+.input-group input[type="text"] {
+    flex: 8; /* 70% for Type */
+}
+
+.input-group input[type="number"] {
+    flex: 2; /* 30% for Quantity */
+}
+
+.modal-content .add-btn {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-btn{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #D7D7D7;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;   
+}
+
+.add-btn:hover {
+    background-color: #555;
+}
+
+.close-btn:hover{
+    background-color: #b1b1b1;
+}
+
+.book-action-buttons {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px; 
+}
+
+.book-action-buttons button{
+    width: 50%;
+}
+
+.delete-text {
+    font-size: 15px;
+    color: #333;
+    margin: 40px 20px;
+    font-style: italic;
+    text-align: center;
+}
+
+#deleteBookModal .book-action-buttons, 
+#viewBookModal .book-action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* View book details */
+.book-details {
+    display: flex;
+    align-items: stretch;
+    border: 1px #DDDDDD solid;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.book-info {
+    width: 85%;
+    margin: 10px 2% 0 0;
+    padding-right: 3%;
+    text-align: left;
+    line-height: 1.8;
+    border-right: 1px solid #e0e0e0;
+}
+
+.book-info div {
+    font-size: 12px;
+    border-bottom: 1px black solid;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.book-saved-by {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    align-items: flex-start;       
+    text-align: left;              
+    font-size: 12px;               
+    line-height: 1.8;
+    white-space: nowrap;        
+    overflow: hidden;              
+    text-overflow: ellipsis;       
+}
+
+#settings-div{
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.5s ease;
 }
