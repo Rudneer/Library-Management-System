@@ -168,40 +168,19 @@ nav ul li.active{
     flex-wrap: wrap;
 }
 
-#settings-div {
-    position: absolute;
-    width: 30%;
-    height: 40vh;
-    top: 8.5vh;
-    right: 0px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 2;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: all 0.5s ease;
-}
-
 #settings-icon {
     cursor: pointer;
 }
 
 .chg-cred{
     font-size: 14px;
-    width: 90%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;     
     justify-content: space-between;
     align-items: baseline;
-    margin-top: 20px;
 }
 
 .chg-cred-in {
-    margin-bottom: 20px; 
     width: 100%;
     display: flex; 
     justify-content: space-between; 
@@ -217,7 +196,6 @@ nav ul li.active{
 }
 
 .chg-cred-head{
-    width: 90%;
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid black;
@@ -234,7 +212,8 @@ nav ul li.active{
 
 .action-button {
     display: flex;
-    justify-content: space-around; 
+    justify-content: center; 
+    margin-top: 20px;
   }
   
 .action-button button {
@@ -489,8 +468,61 @@ thead{
 }
 
 #deleteBookModal .book-action-buttons, 
-#viewBookModal .book-action-buttons {
+#viewBookModal .book-action-buttons,
+#deleteUserModal .book-action-buttons,
+#viewUserModal .book-action-buttons{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+/* View book details */
+.book-details {
+    display: flex;
+    align-items: stretch;
+    border: 1px #DDDDDD solid;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.book-info {
+    width: 85%;
+    margin: 10px 2% 0 0;
+    padding-right: 3%;
+    text-align: left;
+    line-height: 1.8;
+    border-right: 1px solid #e0e0e0;
+}
+
+.book-info div {
+    font-size: 12px;
+    border-bottom: 1px black solid;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.book-saved-by {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    align-items: flex-start;       
+    text-align: left;              
+    font-size: 12px;               
+    line-height: 1.8;
+    white-space: nowrap;        
+    overflow: hidden;              
+    text-overflow: ellipsis;       
+}
+
+#settings-div{
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.5s ease;
 }

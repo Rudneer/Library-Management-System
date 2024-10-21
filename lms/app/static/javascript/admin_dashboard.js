@@ -60,6 +60,47 @@ function toggleActive(button) {
     button.classList.add('active');
 }
 
+// Display/Hide Add User form
+function add_user_toggle() {
+    var settingsDiv = document.getElementById("addUserModal");
+    if (settingsDiv.style.display === "none" || settingsDiv.style.display === "") {
+        settingsDiv.style.display = "block";
+    } else {
+        settingsDiv.style.display = "none";
+    }
+}
+
+// Update/Edit User form
+function update_user_toggle(){
+    var settingsDiv = document.getElementById("updateUserModal");
+    if (settingsDiv.style.display === "none" || settingsDiv.style.display === "") {
+        settingsDiv.style.display = "block";
+    } else {
+        settingsDiv.style.display = "none";
+    }
+}
+
+// Delete Book
+function delete_user_toggle(){
+    var settingsDiv = document.getElementById("deleteUserModal");
+    if (settingsDiv.style.display === "none" || settingsDiv.style.display === "") {
+        settingsDiv.style.display = "block";
+    } else {
+        settingsDiv.style.display = "none";
+    }
+}
+
+
+// View Book
+function view_user_toggle(){
+    var settingsDiv = document.getElementById("viewUserModal");
+    if (settingsDiv.style.display === "none" || settingsDiv.style.display === "") {
+        settingsDiv.style.display = "block";
+    } else {
+        settingsDiv.style.display = "none";
+    }
+}
+
 
 // Button for switching tables between borrowed books and overdue borrowers
 function showTable(tableId) {

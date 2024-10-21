@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/admin_books.css' %}">
+    <link rel="stylesheet" href="{% static 'css/snp_components.css' %}">
 </head>
 <body>
     <div class="dashboard-container">
@@ -54,32 +54,6 @@
 
             <!-- Dashboard Main -->
             <div class="dashboard-main">
-
-                <!-- Settings Div (Modal) -->
-                <div id="settings-div">
-                    <div class="chg-cred-head">
-                        <a class="chg-cred-text"><img class="chg-cred-icon" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >Change Credentials</a>
-                        <a class="settings" id="settings-icon" onclick="toggleSettings()">
-                            <img class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px;" >
-                        </a>
-                        
-                    </div>
-                    <form class = "chg-cred">
-                        <div class = "chg-cred-in">
-                            <label>Enter Current Password</label><input type="password" placeholder="Enter Current Password">
-                        </div>
-                        <div class = "chg-cred-in">
-                            <label>Enter New Password</label><input type="password" placeholder="Enter New Password">
-                        </div>
-                        <div class = "chg-cred-in">
-                            <label>Confirm New Password</label><input type="password" placeholder="Confirm New Password">
-                        </div>
-                    </form>
-                    <div class = "action-button">
-                        <button type="button" onclick="toggleSettings()">Cancel</button>
-                        <button type="button">Confirm</button>
-                    </div>
-                </div>
 
                 <div class="bm-header">
                     <div class="bm-header-left">Book Management</div>
@@ -391,6 +365,34 @@
         </div>
     </div>
 
+    <!-- Settings Div (Modal) -->
+    <div id="settings-div" class="modal">
+        <div class="modal-content">
+            <div class="chg-cred-head">
+                <a class="chg-cred-text"><img class="chg-cred-icon" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >Change Credentials</a>
+                <a class="settings" id="settings-icon" onclick="toggleSettings()">
+                    <img class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px;" >
+                </a>
+                
+            </div>
+            <form class = "chg-cred">
+                <div class = "chg-cred-in">
+                    <label>Enter Current Password</label><input type="password" placeholder="Enter Current Password">
+                </div>
+                <div class = "chg-cred-in">
+                    <label>Enter New Password</label><input type="password" placeholder="Enter New Password">
+                </div>
+                <div class = "chg-cred-in">
+                    <label>Confirm New Password</label><input type="password" placeholder="Confirm New Password">
+                </div>
+            </form>
+            <div class = "action-button">
+                <button type="button" onclick="toggleSettings()">Cancel</button>
+                <button type="button">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <div id="addBookModal" class="modal">
         <div class="modal-content">
             <div class="book-action-text">
@@ -458,13 +460,23 @@
     <div id="viewBookModal" class="modal">
         <div class="modal-content">
             <div class="book-action-text">
-                <div><img class="icon-books" src="{% static 'icons/trashb_icon.png' %}" alt="Catalog Icon" style="width:22px; height:22px;">View Book</div>
+                <div><img class="icon-books" src="{% static 'icons/booksb_icon.png' %}" alt="Catalog Icon" style="width:22px; height:22px;">View Book</div>
                 <img onclick="view_book_toggle()" class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px; cursor: pointer;" >
             </div>
             
             <form class="book-action-form">
-                <div class = "delete-text">
-                    "Are you certain you wish to proceed with the deletion of the selected entry?"
+                <div class="book-details">
+                    <div class="book-info">
+                        <div>Book ID : 1</div>
+                        <div>Name : Hibernate - Core</div>
+                        <div>Type : English</div>
+                        <div>Language : English</div>
+                    </div>
+                    <div class="book-saved-by">
+                        <div>Saved by :</div>
+                        <div>Nisal Gunasekara</div>
+                        <div>(Admin)</div>
+                    </div>
                 </div>
                 <div class="book-action-buttons">
                     <button onclick="view_book_toggle()" type="submit" class="add-btn">CLOSE</button>

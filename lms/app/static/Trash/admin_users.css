@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.dashboard-container{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 15%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.sidebar-logo img{
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.sidebar-logo {
+    text-align: center;
+}
+
+.sidebar-logo h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+nav ul a{
+    text-decoration: none;
+    color: white;
+}
+
+nav ul img{
+    margin: 0 10px;
+}
+
+nav ul li:hover {
+    background-color: #333;
+}
+
+nav ul li.active{
+    background-color: white;
+    color: black;
+}
+
+.logout {
+    color: white;
+    margin-top: auto;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logout:hover{
+    background-color: #333;
+}
+
+
+.logout img{
+    margin: 0 10px;
+}
+
+/* Main Content */
+.main-content {
+    width: 90%;
+}
+
+.header {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.admin-name{
+    font-weight: 600;
+}
+
+.admin-text{
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info img{
+    margin: 10px 15px;
+}
+
+.user-info ul li{
+    font-size: 10px;
+    list-style-type: none;
+}
+
+.time-setting{
+    display: flex;
+    flex-direction: row;
+    justify-content:center ;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.time-info{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: end;
+    margin: 0 15px; 
+    padding-right: 15px;
+    border-right: 2px solid black;
+}
+
+.time {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.date{
+    font-size: 14px;
+}
+
+.settings{
+    display: flex;
+}
+
+.dashboard-main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#settings-div{
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.5s ease;
+}
+
+#settings-icon {
+    cursor: pointer;
+}
+
+.chg-cred{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.chg-cred-in {
+    width: 100%;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: baseline; 
+}
+
+.chg-cred-in input{
+    width: 50%;
+    height: 100%;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.chg-cred-head{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.chg-cred-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.action-button {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+}
+  
+.action-button button { 
+padding: 10px 20px;
+border: none; 
+border-radius: 5px; 
+cursor: pointer;
+font-weight: bold;
+text-transform: uppercase; 
+transition: background-color 0.3s ease; 
+}
+
+.action-button button:first-child { 
+background-color: #D7D7D7; 
+color: white;
+margin-right: 10px; 
+}
+
+.action-button button:first-child:hover {
+background-color: #c2c2c2;
+}
+
+.action-button button:last-child { 
+background-color: black; 
+color: white;
+}
+
+
+/*Book Management Header*/
+.bm-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    margin: 20px 0px;
+}
+
+.bm-header-left{
+    font-size: 20px;
+    font-weight: 5  00;
+}
+
+.bm-header-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.add-book{
+    font-size: 13px;
+    background-color: black;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.add-book a{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 5px;
+}
+
+.search-book{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+input.search-book{
+    padding-left: none;
+    border: none;
+    outline: none;
+}
+
+.bb_table{
+    margin: 0px 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    overflow-y: auto;
+    height: 80vh;
+    position: relative;
+    display: block;
+}
+
+tbody {
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+
+.bb_table::-webkit-scrollbar {
+    display: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+thead{
+    font-size: 13px;
+    position: sticky;
+    top: 0px;  
+    height:8vh;
+    background-color: white; 
+    z-index: 2; 
+}
+
+
+.border {
+    height: 1px;
+    padding: 0;
+    background-color: black;
+}
+
+.action-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.action-buttons a{
+    cursor: pointer;
+}
+
+
+.modal {
+    display: None;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.book-action-text div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-content {
+    background-color: white;
+    margin:10% auto 0px auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 450px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal-content input {
+    padding: 8px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}

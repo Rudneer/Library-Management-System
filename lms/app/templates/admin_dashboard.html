@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/snp_components.css' %}">
     <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
 </head>
 <body>
@@ -29,10 +30,6 @@
                 <img class="icon-logout" src="{% static 'icons/logoutw_icon.png' %}" alt="Catalog Icon" style="width:16px; height:16px;">Log Out
             </a>
         </div>
-
-        <!-- <div id="transparent-image-container">
-            <img src="{% static 'icons/transparent_image.png' %}" id="transparent-image" alt="Transparent Image">
-        </div> -->
 
         <!-- Main Content -->
         <div class="main-content">
@@ -59,42 +56,45 @@
             <!-- Dashboard Main -->
             <div class="dashboard-main">
 
-                <!-- Settings Div (Modal) -->
-                <div id="settings-div">
-                    <div class="chg-cred-head">
-                        <a class="chg-cred-text"><img class="chg-cred-icon" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >Change Credentials</a>
-                        <a class="settings" id="settings-icon" onclick="toggleSettings()">
-                            <img class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px;" >
-                        </a>
-                        
-                    </div>
-                    <form class = "chg-cred">
-                        <div class = "chg-cred-in">
-                            <label>Enter Current Password</label><input type="password" placeholder="Enter Current Password">
-                        </div>
-                        <div class = "chg-cred-in">
-                            <label>Enter New Password</label><input type="password" placeholder="Enter New Password">
-                        </div>
-                        <div class = "chg-cred-in">
-                            <label>Confirm New Password</label><input type="password" placeholder="Confirm New Password">
-                        </div>
-                    </form>
-                    <div class = "action-button">
-                        <button type="button" onclick="toggleSettings()">Cancel</button>
-                        <button type="button">Confirm</button>
-                    </div>
-                </div>
-
-
                 <div class="pie-chart-section">
-                    <div class="pie-chart">
-                        <!-- Simulated Pie Chart -->
-                        <div class="chart"></div>
+                    <div>
+                    <canvas id="pie-chart"></canvas>
                     </div>
-                    <div class="chart-legend">
-                        <span><i class="dot borrowed"></i> Total Borrowed Books</span>
-                        <span><i class="dot returned"></i> Total Returned Books</span>
-                    </div>
+                    
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    
+                    <script>
+                    const ctx = document.getElementById('pie-chart');
+                    
+                    new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                        labels: ['Borrowed Books', 'Available Books'],
+                        datasets: [{
+                            data: [12, 19],
+                            backgroundColor: [
+                            'rgb(61, 62, 62)',
+                            'rgb(0, 0, 0)'
+                            ],
+                            borderWidth: 1
+                        }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: true,   
+                                    position: 'bottom' 
+                                }
+                            },
+                            // layout: {
+                            //     padding: {
+                            //         bottom: 30         
+                            //     }
+                            // }
+                        }
+                    });
+                    </script>
+                      
                 </div>
 
                 <div class="stats-section">
@@ -149,6 +149,35 @@
             </div>
         </div>
     </div>
+
+    <!-- Settings Div (Modal) -->
+    <div id="settings-div" class="modal">
+        <div class="modal-content">
+            <div class="chg-cred-head">
+                <a class="chg-cred-text"><img class="chg-cred-icon" src="{% static 'icons/settingb_icon.png' %}" alt="Setting Icon" style="width:25px; height:25px;" >Change Credentials</a>
+                <a class="settings" id="settings-icon" onclick="toggleSettings()">
+                    <img class="close-icon" src="{% static 'icons/closew_icon.png' %}" alt="Close Icon" style="width:25px; height:25px;" >
+                </a>
+                
+            </div>
+            <form class = "chg-cred">
+                <div class = "chg-cred-in">
+                    <label>Enter Current Password</label><input type="password" placeholder="Enter Current Password">
+                </div>
+                <div class = "chg-cred-in">
+                    <label>Enter New Password</label><input type="password" placeholder="Enter New Password">
+                </div>
+                <div class = "chg-cred-in">
+                    <label>Confirm New Password</label><input type="password" placeholder="Confirm New Password">
+                </div>
+            </form>
+            <div class = "action-button">
+                <button type="button" onclick="toggleSettings()">Cancel</button>
+                <button type="button">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <script src="{% static 'javascript/admin_dashboard.js' %}"></script>
 </body>
 </html>
