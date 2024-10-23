@@ -56,96 +56,155 @@
             <!-- Dashboard Main -->
             <div class="dashboard-main">
 
-                <div class="pie-chart-section">
-                    <div>
-                    <canvas id="pie-chart"></canvas>
+                <dic class = "stats-header">
+
+                    <div class="stats-section">
+                        <div class="stat-box">
+                            <img class="stat-icon-users" src="{% static 'icons/userb_icon.png' %}" alt="User Icon" style="width:50px; height:50px;" >
+                            <div class="stat-text">
+                                <div class="stat-number">0150</div>
+                                <div class="stat-label">Total User Base</div>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <img class="stat-icon-books" src="{% static 'icons/booksb_icon.png' %}" alt="Book Icon" style="width:50px; height:50px;" >
+                            <div class="stat-text">
+                                <div class="stat-number">01500</div>
+                                <div class="stat-label">Total Book Count</div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    
-                    <script>
-                    const ctx = document.getElementById('pie-chart');
-                    
-                    new Chart(ctx, {
-                        type: 'pie',
-                        data: {
-                        labels: ['Borrowed Books', 'Available Books'],
-                        datasets: [{
-                            data: [12, 19],
-                            backgroundColor: [
-                            'rgb(61, 62, 62)',
-                            'rgb(0, 0, 0)'
-                            ],
-                            borderWidth: 1
-                        }]
-                        },
-                        options: {
-                            plugins: {
-                                legend: {
-                                    display: true,   
-                                    position: 'bottom' 
-                                }
+    
+                    <div class="extra-sections">
+                        <div class="overdue-section">
+                            <h3>Overdue Borrowers</h3>
+                            <div class="borrower">
+                                <i class="icon-user"></i>
+                                Sasmith Gunasekara (Borrowed ID: 10)
+                                <i class="icon-refresh"></i>
+                            </div>
+                        </div>
+    
+                        <div class="admin-section">
+                            <h3>BookWorm Admins</h3>
+                            <div class="admin">
+                                <i class="icon-admin"></i>
+                                Nisal Gunasekara (Admin ID: 1)
+                                <span class="active">Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </dic>
+
+                <div class="chart-section" >
+
+                    <div class="pie-chart-section">
+                        <div>
+                        <canvas id="pie-chart"></canvas>
+                        </div>
+                        
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        
+                        <script>
+                        const ctx = document.getElementById('pie-chart');
+                        
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                            labels: ['Borrowed Books', 'Available Books'],
+                            datasets: [{
+                                data: [12, 19],
+                                backgroundColor: [
+                                'rgb(61, 62, 62)',
+                                'rgb(0, 0, 0)'
+                                ],
+                                borderWidth: 1
+                            }]
                             },
-                            // layout: {
-                            //     padding: {
-                            //         bottom: 30         
-                            //     }
-                            // }
-                        }
-                    });
-                    </script>
-                      
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: true,   
+                                        position: 'bottom',
+                                        labels: {
+                                            font: {
+                                                size: 14
+                                            }
+                                        } 
+                                    }
+                                },
+                            }
+                        });
+                        </script> 
+                    </div>
+
+                    <div class="bar-chart-section">
+
+                        <div>
+                            <canvas id="bar-chart"></canvas>
+                        </div>
+                          
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        
+                        <script>
+                        const btx = document.getElementById('bar-chart');
+                        
+                        new Chart(btx, {
+                            type: 'bar',
+                            data: {
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [{
+                                label: 'No. of Books',
+                                data: [12, 19, 3, 5, 2, 3],
+                                backgroundColor: [
+                                'rgb(61, 62, 62)'
+                                ],
+                                borderWidth: 1
+                            }]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: false,   
+                                        position: 'bottom' 
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'Book Category',
+                                            color: 'rgb(61, 62, 62)',
+                                            font: {
+                                                size: 14
+                                            }
+                                        }
+                                    },
+                                    y: {
+                                        grid: {
+                                            display: false
+                                        },
+                                        title: {
+                                            display: true, 
+                                            text: 'Count of Books',
+                                            color: 'rgb(61, 62, 62)',
+                                            font: {
+                                                size: 14
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        </script>
+                    </div>
+                
                 </div>
 
-                <div class="stats-section">
-                    <div class="stat-box">
-                        <i class="icon-users"></i>
-                        <div class="stat-number">0150</div>
-                        <div class="stat-label">Total User Base</div>
-                    </div>
-                    <div class="stat-box">
-                        <i class="icon-books"></i>
-                        <div class="stat-number">01500</div>
-                        <div class="stat-label">Total Book Count</div>
-                    </div>
-                    <div class="stat-box">
-                        <i class="icon-branches"></i>
-                        <div class="stat-number">0010</div>
-                        <div class="stat-label">Branch Count</div>
-                    </div>
-                </div>
-
-                <div class="extra-sections">
-                    <div class="overdue-section">
-                        <h3>Overdue Borrowers</h3>
-                        <div class="borrower">
-                            <i class="icon-user"></i>
-                            Sasmith Gunasekara (Borrowed ID: 10)
-                            <i class="icon-refresh"></i>
-                        </div>
-                        <!-- Additional Borrowers... -->
-                    </div>
-
-                    <div class="admin-section">
-                        <h3>BookWorm Admins</h3>
-                        <div class="admin">
-                            <i class="icon-admin"></i>
-                            Nisal Gunasekara (Admin ID: 1)
-                            <span class="active">Active</span>
-                        </div>
-                        <!-- Additional Admins... -->
-                    </div>
-
-                    <div class="branch-section">
-                        <h3>Branch Network</h3>
-                        <div class="branch">
-                            <i class="icon-branch"></i>
-                            BookWorm - Matara (Branch ID: 1)
-                            <i class="icon-refresh"></i>
-                        </div>
-                        <!-- Additional Branches... -->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
