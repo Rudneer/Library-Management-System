@@ -24,13 +24,14 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input name = first_name type="text" placeholder="First Name" required>
-                    <input name = last_name type="text" placeholder="Last Name" required>
-                </div>
-                <div class="input-group">
-                    <input name = contact_no type="text" placeholder="Contact No" required>
+                    <input name = first_name type="text" placeholder="Name" required>
                     <input name = email type="email" placeholder="Email" required>
+                    <!-- <input name = last_name type="text" placeholder="Last Name" required> -->
                 </div>
+                <!-- <div class="input-group"> -->
+                    <!-- <input name = contact_no type="text" placeholder="Contact No" required> -->
+                    
+                <!-- </div> -->
                 <div class="input-group">
                     <input name = username type="text" placeholder="Username" required>
                     <input name = password type="password" placeholder="Password" required>

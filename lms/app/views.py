@@ -65,16 +65,34 @@ def admin_catalog(request):
 def admin_books(request):
     current_time = datetime.now()
     context = {
-        'current_time': current_time,
+        'current_time': current_time
     }
     return render(request, 'admin_books.html', context)
     
 @login_required(login_url="/admin-login/")
 def admin_users(request):
     current_time = datetime.now()
+    users = User.objects.filter(is_staff=False)
     context = {
         'current_time': current_time,
+        'users':users
     }
+    return render(request, 'admin_users.html', context)
+
+@login_required(login_url="/admin-login/")
+def update_user(request, id):
+    data = request.POST
+    user = User.objects.get(id = id)
+    if request.method == "POST":
+        first_name = data.get('first_name')
+        email = data.get('email')
+        username = data.get('username')
+        password = data.get('password')
+        user.save()
+        return redirect('/admin-users/')
+    else:
+        context = {'user': user}
+
     return render(request, 'admin_users.html', context)
 
 
@@ -102,7 +120,6 @@ def member_signup(request):
         data = request.POST 
         user = User.objects.create(
             first_name = data.get('first_name'),
-            last_name = data.get('last_name'),
             email = data.get('email'),
             is_staff = 0,
             username = data.get('username'),
