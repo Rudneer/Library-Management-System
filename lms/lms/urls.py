@@ -27,8 +27,10 @@ urlpatterns = [
     path('admin-catalog/', admin_catalog, name = 'admin-catalog'),
     path('admin-books/', admin_books, name = 'admin-books'),
     path('admin-users/', admin_users, name = 'admin-users'),
+    path('update-user/<id>/', update_user, name = 'update-user'),
     path('admin-signup/', admin_signup, name = 'admin-login'),
     path('member-login/', member_login, name = 'member-login'),
     path('member-signup/', member_signup, name = 'member-signup'),
     path('member-dashboard/', member_dashboard, name = 'member-dashboard'),
+
 ]
